@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8">
+    <title>Okos Haz</title>
+    <style>
+        h1 {
+            margin: 0;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        body {
+            background-image: url('https://t3.ftcdn.net/jpg/01/12/62/38/360_F_112623833_yhJ5QebLDuXNrkRVqUuzMyekQQxN7FAw.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #curtain-left {
+            position: absolute;
+            left: -100%; /* Start off the screen to the left */
+            transition: left 1s;
+            width: 550px; /* Adjust the width */
+            height: 1100px; /* Adjust the height */
+            transform: scaleX(-1); /* Mirror the image horizontally */
+        }
+
+        #curtain-right {
+            position: absolute;
+            right: -100%; /* Start off the screen to the right */
+            transition: right 1s;
+            width: 550px; /* Adjust the width */
+            height: 1100px; /* Adjust the height */
+        }
+
+        #button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #openButton {
+            padding: 10px 20px;
+            background-color: #0074d9;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Okos haz</h1>
+    <h2>Okos fuggony demo:</h2>
+    <div id="button-container">
+        <button id="openButton">Be/Ki</button>
+    </div>
+    <img id="curtain-left" src="https://clipart-library.com/image_gallery/232659.png" alt="Curtain" />
+    <img id="curtain-right" src="https://clipart-library.com/image_gallery/232659.png" alt="Curtain" />
+</body>
+
+<script>
+    const curtainLeft = document.getElementById("curtain-left");
+    const curtainRight = document.getElementById("curtain-right");
+    const openButton = document.getElementById("openButton");
+    let curtainsOpen = false;
+
+    openButton.addEventListener("click", () => {
+        if (curtainsOpen) {
+            // If curtains are already open, close them
+            curtainLeft.style.left = "-200%";
+            curtainRight.style.right = "-200%";
+            curtainsOpen = false;
+        } else {
+            // If curtains are closed, open them
+            curtainLeft.style.left = "0";
+            curtainRight.style.right = "0";
+            curtainsOpen = true;
+        }
+    });
+</script>
+</html>
